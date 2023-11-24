@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class TicTacToe extends JFrame {
+    static boolean Terminator = true;
     //Padding för att knapparna skall se mer ordnade ut
     static final int UNI_PADDING = 10;
     public static String winner;
@@ -31,7 +33,7 @@ public class TicTacToe extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             //For-loop för att köra if-statements 9 gånger(alla knappar) som sätter X/O på knapparna och byter spelare efter varje klick.
-            for (int i = 0; i < 9; i++) {
+            /*for (int i = 0; i < 9; i++) {
                 if (e.getSource() == arrayJB[i]) {
                     if (playerGo) {
                         if ((arrayJB[i].getText().isEmpty())){
@@ -49,6 +51,43 @@ public class TicTacToe extends JFrame {
                             playerGo = true;
                             checkWinOrDraw();
                         }
+                    }
+                }
+            }*/
+            for (int i = 0; i < 9; i++) {
+                if (e.getSource() == arrayJB[i]) {
+                    if(!Terminator)  //not terminator
+                        if ((arrayJB[i].getText().isEmpty()) && playerGo) {
+                            arrayJB[i].setText("O");
+                            p2.setEnabled(false);
+                            p1.setEnabled(true);
+                            playerGo = false;
+                            checkWinOrDraw();
+                        }else {
+                            arrayJB[i].setText("X");  // playerr 1 väljer
+                            p1.setEnabled(false);
+                            p2.setEnabled(true);
+                            playerGo = true;
+                            checkWinOrDraw();
+                        }
+
+                    else if (playerGo)  {   // Ai väljer O
+                        // loop om med while loop
+                        Random random = new Random();
+                        int r = random.nextInt(9);
+                        arrayJB[r].setText("O");
+                        p2.setEnabled(false);
+                        p1.setEnabled(true);
+                        playerGo = false;
+                        checkWinOrDraw();
+                    }
+                    else if (arrayJB[i].getText().isEmpty()){
+                        arrayJB[i].setText("X");
+                        p1.setEnabled(false);
+                        p2.setEnabled(true);
+                        playerGo = true;
+                        checkWinOrDraw();
+                        arrayJB[i].doClick();
                     }
                 }
             }
