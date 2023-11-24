@@ -84,6 +84,7 @@ public class TicTacToe extends JFrame {
         outputTF.setHorizontalAlignment(SwingConstants.CENTER);
         Font bigFont = outputTF.getFont().deriveFont(Font.PLAIN, 30f);
         outputTF.setFont(bigFont);
+        outputTF.setBorder(BorderFactory.createLineBorder(Color.black, 5));
         JPanel panelTop = new JPanel();
         panelTop.setLayout(new BorderLayout());
         panelTop.add(outputTF, BorderLayout.NORTH);
@@ -91,7 +92,6 @@ public class TicTacToe extends JFrame {
         players.setLayout(new FlowLayout());
         players.add(p1);
         players.add(p2);
-        outputTF.setBorder(BorderFactory.createLineBorder(Color.black, 5));
         application.add(panelTop, BorderLayout.NORTH);
 
         //For-loop som bygger våra JButtons
@@ -202,12 +202,8 @@ public class TicTacToe extends JFrame {
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
             clip.start();
-        } catch (UnsupportedAudioFileException a) {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException a) {
             a.printStackTrace();
-        } catch (IOException b) {
-            b.printStackTrace();
-        } catch (LineUnavailableException c) {
-            c.printStackTrace();
         }
     }
 

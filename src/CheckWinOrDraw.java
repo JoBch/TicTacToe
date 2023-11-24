@@ -1,4 +1,4 @@
-import javax.sound.sampled.*;
+/*import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -53,7 +53,7 @@ public class Main extends JFrame {
                         }
                     }
                 }
-            }*/
+            }
 
             for (int i = 0; i < 9; i++) {
                 if (e.getSource() == arrayJB[i]) {
@@ -257,7 +257,7 @@ public class Main extends JFrame {
             b.printStackTrace();
         } catch (LineUnavailableException c) {
             c.printStackTrace();
-        }      */
+        }
     }
 
     public static void Winner() {
@@ -303,4 +303,4 @@ public class Main extends JFrame {
             arrayJB[i].setText("");
         }
     }
-}
+}*/
