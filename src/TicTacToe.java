@@ -33,27 +33,6 @@ public class TicTacToe extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             //For-loop för att köra if-statements 9 gånger(alla knappar) som sätter X/O på knapparna och byter spelare efter varje klick.
-            /*for (int i = 0; i < 9; i++) {
-                if (e.getSource() == arrayJB[i]) {
-                    if (playerGo) {
-                        if ((arrayJB[i].getText().isEmpty())){
-                            arrayJB[i].setText("O");
-                            p2.setEnabled(false);
-                            p1.setEnabled(true);
-                            playerGo = false;
-                            checkWinOrDraw();
-                        }
-                    } else {
-                        if ((arrayJB[i].getText().isEmpty())) {
-                            arrayJB[i].setText("X");
-                            p1.setEnabled(false);
-                            p2.setEnabled(true);
-                            playerGo = true;
-                            checkWinOrDraw();
-                        }
-                    }
-                }
-            }*/
             for (int i = 0; i < 9; i++) {
                 if (e.getSource() == arrayJB[i]) {
                     if(!Terminator)  //not terminator
@@ -81,7 +60,7 @@ public class TicTacToe extends JFrame {
                         playerGo = false;
                         checkWinOrDraw();
                     }
-                    else if (arrayJB[i].getText().isEmpty()){
+                    else {
                         arrayJB[i].setText("X");
                         p1.setEnabled(false);
                         p2.setEnabled(true);
