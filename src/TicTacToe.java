@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class TicTacToe extends JFrame {
-    static boolean Terminator = true;
+    static boolean Terminator = false;
     //Padding för att knapparna skall se mer ordnade ut
     static final int UNI_PADDING = 10;
     public static String winner;
@@ -43,7 +43,7 @@ public class TicTacToe extends JFrame {
                             playerGo = false;
                             checkWinOrDraw();
                         }else {
-                            arrayJB[i].setText("X");  // playerr 1 väljer
+                            arrayJB[i].setText("X");  // player 1 väljer
                             p1.setEnabled(false);
                             p2.setEnabled(true);
                             playerGo = true;
@@ -53,8 +53,16 @@ public class TicTacToe extends JFrame {
                     else if (playerGo)  {   // Ai väljer O
                         // loop om med while loop
                         Random random = new Random();
-                        int r = random.nextInt(9);
-                        arrayJB[r].setText("O");
+                        int r= random.nextInt(9);
+                        System.out.println(r);
+
+                        while (arrayJB[r].getText()!=""){
+                            System.out.println(arrayJB[r].getText());
+                            System.out.println(r);
+                            r = random.nextInt(9);
+                            arrayJB[r].setText("O");
+                      }
+                        arrayJB[r].setText("0");
                         p2.setEnabled(false);
                         p1.setEnabled(true);
                         playerGo = false;
@@ -156,6 +164,7 @@ public class TicTacToe extends JFrame {
                 p1.setText("PLAYER 1 X");
                 p2.setText("TERMINATOR O");
                 sound = "src/LIVE.wav";
+                Terminator=true;
                 Sound();
                 frame.setVisible(false);
             }
