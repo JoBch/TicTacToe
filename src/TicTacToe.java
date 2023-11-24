@@ -25,7 +25,7 @@ public class TicTacToe extends JFrame {
     //För att kolla om game=draw
     static int counter = 0;
     //Vårt spel
-    private static TicTacToe application;
+    private static TicTacToe ticTacToe;
     //ActionListener till våra knappar för att kunna köra spelet
     static ActionListener listener = new ActionListener() {
         @Override
@@ -62,10 +62,10 @@ public class TicTacToe extends JFrame {
 
     public static void main(String[] args) {
         //Application eller frame
-        application = new TicTacToe();
-        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        application.setResizable(false);
-        application.setLayout(new BorderLayout());
+        ticTacToe = new TicTacToe();
+        ticTacToe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ticTacToe.setResizable(false);
+        ticTacToe.setLayout(new BorderLayout());
 
         //JPanel som rymmer JButtons
         JPanel panelJB = new JPanel();
@@ -92,7 +92,7 @@ public class TicTacToe extends JFrame {
         players.setLayout(new FlowLayout());
         players.add(p1);
         players.add(p2);
-        application.add(panelTop, BorderLayout.NORTH);
+        ticTacToe.add(panelTop, BorderLayout.NORTH);
 
         //For-loop som bygger våra JButtons
         for (int i = 0; i < 9; i++) {
@@ -103,15 +103,15 @@ public class TicTacToe extends JFrame {
             arrayJB[i].setActionCommand(i + "");
             panelJB.add(arrayJB[i]);
         }
-        application.add(panelJB);
-        application.setVisible(true);
+        ticTacToe.add(panelJB);
+        ticTacToe.setVisible(true);
         changeGameMode();
 
     }
 
     public static void changeGameMode() {
         // skapa en panel med er custom game mode
-        JDialog frame = new JDialog(application, "Game mode", true);
+        JDialog frame = new JDialog(ticTacToe, "Game mode", true);
         JPanel dialog = new JPanel();
         frame.setLocation(150, 250);
         frame.add(dialog);
@@ -208,7 +208,7 @@ public class TicTacToe extends JFrame {
     }
 
     public static void Winner() {
-        JDialog d = new JDialog(application, "dialog Box");
+        JDialog d = new JDialog(ticTacToe, "dialog Box");
         JLabel l = new JLabel(winner + "! Want to play again?");
         d.add(l);
         d.setLayout(new FlowLayout());
@@ -228,7 +228,7 @@ public class TicTacToe extends JFrame {
         no.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                application.dispose();
+                ticTacToe.dispose();
                 sound = "src/Hasta.wav";
                 Sound();
             }
